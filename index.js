@@ -14,9 +14,29 @@ app.get("/", (req, res) => {
     res.render('index');
 });
 
-app.post("/result", (req, res) => {
+app.post("/story1", (req, res) => {
     //res.send(req.body)
-    res.render('result', {
+    res.render('story1', {
+        story: req.body.story,
+        noun: req.body.noun,
+        verb: req.body.verb,
+        adj: req.body.adj
+    })
+});
+
+app.post("/story2", (req, res) => {
+    //res.send(req.body)
+    res.render('story2', {
+        story: req.body.story,
+        noun: req.body.noun,
+        verb: req.body.verb,
+        adj: req.body.adj
+    })
+});
+
+app.post("/story3", (req, res) => {
+    //res.send(req.body)
+    res.render('story3', {
         story: req.body.story,
         noun: req.body.noun,
         verb: req.body.verb,
