@@ -10,7 +10,7 @@
         <title>Mad Libs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="CSS\main.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -18,23 +18,22 @@
         <![endif]-->
         <div id="intro" class="index-div">
             <h1>Let's Play Mad Libs!</h1>
-            <button id="cont">Continue</button>
+            <button id="cont" onclick="contClick()">Continue</button>
         </div>
 
     
         <div id="choose-story" class="index-div">
             <h1>Which story would you like to see?</h1>
-            <span id="button-row">
-                <button id="s1">Story1</button>
-                <button id="s2">Story2</button>
-                <button id="s3">Story3</button>
+            <span id="p-row">
+                <button id="s1" onclick="s1Click()">Story1</button>
+                <button id="s2" onclick="s2Click()">Story2</button>
+                <button id="s3" onclick="s3Click()">Story3</button>
             </span>
-            <button id="rand">Choose for me!</button>
-            <a id="subStory">Next!</a>
+            <button id="rand" onclick="randClick()">Choose for me!</button>
         </div>
 
 
-        <form id="words" action="/result" method="post">
+        <form id="words" action="" method="post">
 
             <div id="choose-nouns" class="index-div">
                 <h1>Choose 5 nouns</h1>
@@ -43,7 +42,7 @@
                 <input id="n3" type="text" name="noun">
                 <input id="n4" type="text" name="noun">
                 <input id="n5" type="text" name="noun">
-                <a id="sub-nouns">Next!</a>
+                <h1 id="sub-nouns" class="btn" onclick="nounClick()">Next!</h1>
             </div>
 
 
@@ -52,7 +51,7 @@
                 <input id="v1" type="text" name="verb">
                 <input id="v2" type="text" name="verb">
                 <input id="v3" type="text" name="verb">
-                <a id="sub-verbs">Next!</a>
+                <h1 id="sub-verbs" class="btn" onclick="verbClick()">Next!</h1>
             </div>
 
 
@@ -62,7 +61,7 @@
                 <input id="a2" type="text" name="adj">
                 <input id="a3" type="text" name="adj">
                 <input id="a4" type="text" name="adj">
-                <a id="sub-adj">Next!</a>
+                <h1 id="sub-adj" class="btn" onclick="adjClick()">Next!</h1>
             </div>
 
 
@@ -71,59 +70,66 @@
                 <input id="sub" type="submit" value="submit">
             </div>
         </form>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript">
+        load();
 
-    <script async defer>
-        //Story Selection
-        form = document.getElementById('words');
-        var story;
-        var story1 = document.getElementById('s1');
-        var story2 = document.getElementById('s2');
-        var story3 = document.getElementById('s3');
-        var storyR = document.getElementById('rand');
+        function load(){
+            $('#intro').show();
+            $('#choose-story').hide();
+            $('#choose-nouns').hide();
+            $('#choose-verbs').hide();
+            $('#choose-adj').hide();
+            $('#fin').hide();
+        }
 
-        story1.addEventListener('click', () => {
-            form.action = '/story1';
-        })
-
-        story2.addEventListener('click', () => {
-            form.action = '/story2';
-        })
-
-        story3.addEventListener('click', () => {
-            form.action = '/story3';
-        })
-
-        storyR.addEventListener('click', () => {
-            num = Math.floor(Math.random() * 3) + 1;
-            story = '/story'+num;
-            form.action = story;
-        })
-        
-        //nav buttons
-        var cont     = document.getElementById('cont');
-        var subNouns = document.getElementById('sub-nouns');
-        var subVerbs = document.getElementById('sub-verbs');
-        var subAdj   = document.getElementById('sub-adj');
-
-        //event handlers
-
-        cont.addEventListener('click', () => {
-            //hide this and show next
-        })
-
-        subNouns.addEventListener('click', () => {
-            //hide this and show next
-        })
-
-        subVerbs.addEventListener('click', () => {
-            //hide this and show next
-        })
-
-        subAdj.addEventListener('click', () => {
-            //hide this and show next
-        })
+        function contClick() {
+            $('#choose-story').show();
+            $('#intro').hide();
+        }
+       
+        function s1Click() {
+            $('#words').attr('action', '/story1');
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        }
+ 
+        function s2Click() {
+            $('#words').attr('action', '/story2');
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        }
+ 
+        function s3Click() {
+            $('#words').attr('action', '/story3');
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        }
+ 
+        function randClick() {
+            rand = Math.floor(Math.random() * 3) + 1;
+            choice = '/story'+num;
+            $('#words').attr('action', choice);
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        }
+ 
+        function nounClick() {
+            $('#choose-nouns').hide();
+            $('#choose-verbs').show();
+        }
+ 
+        function verbClick() {
+            $('#choose-verbs').hide();
+            $('#choose-adj').show();
+        }
+ 
+        function adjClick() {
+            $('#choose-adj').hide();
+            $('#fin').show();
+        }
 
     </script>
-
+    
     </body>
 </html>
