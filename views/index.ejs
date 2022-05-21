@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mad Libs</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="CSS\main.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="intro" class="index-div">
+            <h1>Let's Play Mad Libs!</h1>
+            <button id="cont">Continue</button>
+        </div>
+
+    <form action="" method="">
+        <div id="choose-story" class="index-div">
+            <h1>Which story would you like to see?</h1>
+            <label>
+                <input type="radio" name="story" value="story1">Story 1
+            </label>
+            <label>
+                <input type="radio" name="story" value="story2">Story 2
+            </label>
+            <label>
+                <input type="radio" name="story" value="story3">Story 3
+            </label>
+            <label>
+                <input type="radio" name="story" value="random">Random
+            </label>
+            <button id="subStory">Next!</button>
+        </div>
+
+        <div id="choose-nouns" class="index-div">
+            <h1>Choose 5 nouns</h1>
+            <input id="n1" type="text" name="noun">
+            <input id="n2" type="text" name="noun">
+            <input id="n3" type="text" name="noun">
+            <input id="n4" type="text" name="noun">
+            <input id="n5" type="text" name="noun">
+            <button id="sub-nouns">Next!</button>
+        </div>
+
+        <div id="choose-verbs" class="index-div">
+            <h1>Choose 3 verbs</h1>
+            <input id="v1" type="text" name="verb">
+            <input id="v2" type="text" name="verb">
+            <input id="v3" type="text" name="verb">
+            <button id="sub-verbs">Next!</button>
+        </div>
+
+        <div id="choose-adj" class="index-div">
+            <h1>Choose 4 adjuctives</h1>
+            <input id="a1" type="text" name="adj">
+            <input id="a2" type="text" name="adj">
+            <input id="a3" type="text" name="adj">
+            <input id="a4" type="text" name="adj">
+            <button id="sub-adj">Next!</button>
+        </div>
+
+        <div id="fin" class="index-div">
+            <h1>All Done!</h1>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+<script async defer>
+    //buttons
+    var cont     = document.getElementById('cont');
+    var subNouns = document.getElementById('sub-nouns');
+    var subVerbs = document.getElementById('sub-verbs');
+    var subAdj   = document.getElementById('sub-adj');
+
+    //event handlers
+
+    cont.addEventListener('click', () => {
+        //hide this and show next
+    })
+
+    subStory.addEventListener('click', () => {
+        //if random is selected, select random radio
+        num = Math.floor(Math.random() * 3) + 1;
+        story = 'story'+num;
+        //hide this and show next
+    })
+
+    subNouns.addEventListener('click', () => {
+        //hide this and show next
+    })
+
+
+    subVerbs.addEventListener('click', () => {
+        //hide this and show next
+    })
+
+
+    subAdj.addEventListener('click', () => {
+        //hide this and show next
+    })
+</script>
+
+    </body>
+</html>
