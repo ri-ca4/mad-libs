@@ -15,9 +15,15 @@ app.get("/", (req, res) => {
 });
 
 app.post("/result", (req, res) => {
-    return res.send(req.body);
+    //res.send(req.body)
+    res.render('result', {
+        story: req.body.story,
+        noun: req.body.noun,
+        verb: req.body.verb,
+        adj: req.body.adj
+    })
 });
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
-})
+});
