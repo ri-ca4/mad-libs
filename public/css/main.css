@@ -1,69 +1,29 @@
-.hide{
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-body{
-    background-color: rgb(215, 215, 132);
+.index-div {
+    border: 1px, solid, black;
+    height: 50vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-#story1 {
-    height: fit-content;
-    width: 60vw;
-    background-color: black;
-    color:aliceblue;
-    margin: auto;
+.btn{
+    border: 1px, solid, black;
+    background-color: white;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;  
+    font-size: 14px;
+    padding: 8px 12px; 
 }
 
-#story2 {
-    height: fit-content;
-    width: 60vw;
-    background-color: rgb(196, 190, 24);
-    color:rgb(0, 0, 0);
-    margin:auto;
-}
-
-#story3 {
-    height: fit-content;
-    width: 60vw;
-    background-color: rgb(153, 106, 197);
-    color:rgb(10, 37, 61);
-    margin: auto;
-}
-
-/* .index-div{
-
-}
-
-#intro{
-
-}
-
-#choose-story{
-
-}
-
-#choose-nouns{
-
-}
-
-#choose-verbs{
-
-}
-
-#choose-adj{
-
-}
-
-#fin{
-
-}
-
-#button-row{
-
-} */
 
 .usersWords{
     font-weight: bold;

@@ -16,20 +16,21 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+    <div class="container">
         <div id="intro" class="index-div">
             <h1>Let's Play Mad Libs!</h1>
-            <button id="cont" onclick="contClick()">Continue</button>
+            <button id="cont">Continue</button>
         </div>
 
     
         <div id="choose-story" class="index-div">
             <h1>Which story would you like to see?</h1>
-            <span id="p-row">
-                <button id="s1" onclick="s1Click()">Story1</button>
-                <button id="s2" onclick="s2Click()">Story2</button>
-                <button id="s3" onclick="s3Click()">Story3</button>
-            </span>
-            <button id="rand" onclick="randClick()">Choose for me!</button>
+            <span id="button-row">
+                <button id="s1">Story1</button>
+                <button id="s2">Story2</button>
+                <button id="s3">Story3</button>
+            </span><br>
+            <button id="rand">Choose for me!</button>
         </div>
 
 
@@ -42,7 +43,7 @@
                 <input id="n3" type="text" name="noun">
                 <input id="n4" type="text" name="noun">
                 <input id="n5" type="text" name="noun">
-                <h1 id="sub-nouns" class="btn" onclick="nounClick()">Next!</h1>
+                <button type="button" id="sub-nouns">Next!</button>
             </div>
 
 
@@ -51,7 +52,7 @@
                 <input id="v1" type="text" name="verb">
                 <input id="v2" type="text" name="verb">
                 <input id="v3" type="text" name="verb">
-                <h1 id="sub-verbs" class="btn" onclick="verbClick()">Next!</h1>
+                <button type="button" id="sub-verbs">Next!</button>
             </div>
 
 
@@ -61,7 +62,7 @@
                 <input id="a2" type="text" name="adj">
                 <input id="a3" type="text" name="adj">
                 <input id="a4" type="text" name="adj">
-                <h1 id="sub-adj" class="btn" onclick="adjClick()">Next!</h1>
+                <button type="button" id="sub-adj">Next!</button>
             </div>
 
 
@@ -70,6 +71,7 @@
                 <input id="sub" type="submit" value="submit">
             </div>
         </form>
+    </div>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script type="text/javascript">
         load();
@@ -83,51 +85,54 @@
             $('#fin').hide();
         }
 
-        function contClick() {
+        $('#cont').click(() => {
             $('#choose-story').show();
             $('#intro').hide();
-        }
+        })
        
-        function s1Click() {
+        $('#s1').click(() => {
             $('#words').attr('action', '/story1');
             $('#choose-story').hide();
             $('#choose-nouns').show();
-        }
+        })
  
-        function s2Click() {
+        $('#s2').click(() => {
             $('#words').attr('action', '/story2');
             $('#choose-story').hide();
             $('#choose-nouns').show();
-        }
+        })
  
-        function s3Click() {
+        $('#s3').click(() => {
             $('#words').attr('action', '/story3');
             $('#choose-story').hide();
             $('#choose-nouns').show();
-        }
+        })
  
-        function randClick() {
+        $('#rand').click(() => {
             rand = Math.floor(Math.random() * 3) + 1;
             choice = '/story'+num;
             $('#words').attr('action', choice);
             $('#choose-story').hide();
             $('#choose-nouns').show();
-        }
+        })
  
-        function nounClick() {
+        $('#sub-nouns').click(() => {
+            event.preventDefault();
             $('#choose-nouns').hide();
             $('#choose-verbs').show();
-        }
+        })
  
-        function verbClick() {
+        $('#sub-verbs').click(() => {
+            event.preventDefault();
             $('#choose-verbs').hide();
             $('#choose-adj').show();
-        }
+        })
  
-        function adjClick() {
+        $('#sub-adj').click(() => {
+            event.preventDefault();
             $('#choose-adj').hide();
             $('#fin').show();
-        }
+        })
 
     </script>
     
