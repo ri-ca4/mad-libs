@@ -38,37 +38,41 @@
 
             <div id="choose-nouns" class="index-div">
                 <h1>Choose 5 nouns</h1>
-                <input id="n1" type="text" name="noun">
-                <input id="n2" type="text" name="noun">
-                <input id="n3" type="text" name="noun">
-                <input id="n4" type="text" name="noun">
-                <input id="n5" type="text" name="noun">
+                <input id="n1" type="text" name="noun" required>
+                <input id="n2" type="text" name="noun" required>
+                <input id="n3" type="text" name="noun" required>
+                <input id="n4" type="text" name="noun" required>
+                <input id="n5" type="text" name="noun" required>
+                <span id="valNouns"></span>
                 <button type="button" id="sub-nouns">Next!</button>
             </div>
 
 
             <div id="choose-verbs" class="index-div">
                 <h1>Choose 3 verbs</h1>
-                <input id="v1" type="text" name="verb">
-                <input id="v2" type="text" name="verb">
-                <input id="v3" type="text" name="verb">
+                <p>(all verbs should be past tense)</p>
+                <input id="v1" type="text" name="verb" required>
+                <input id="v2" type="text" name="verb" required>
+                <input id="v3" type="text" name="verb" required>
+                <span id="valVerbs"></span>
                 <button type="button" id="sub-verbs">Next!</button>
             </div>
 
 
             <div id="choose-adj" class="index-div">
-                <h1>Choose 4 adjuctives</h1>
-                <input id="a1" type="text" name="adj">
-                <input id="a2" type="text" name="adj">
-                <input id="a3" type="text" name="adj">
-                <input id="a4" type="text" name="adj">
+                <h1>Choose 4 adjectives</h1>
+                <input id="a1" type="text" name="adj" required>
+                <input id="a2" type="text" name="adj" required>
+                <input id="a3" type="text" name="adj" required>
+                <input id="a4" type="text" name="adj" required>
+                <span id="valAdj"></span>
                 <button type="button" id="sub-adj">Next!</button>
             </div>
 
 
             <div id="fin" class="index-div">
                 <h1>All Done!</h1>
-                <input id="sub" type="submit" value="submit">
+                <input id="sub" type="submit" value="Submit">
             </div>
         </form>
     </div>
@@ -85,6 +89,7 @@
             $('#fin').hide();
         }
 
+    //Button Clicks
         $('#cont').click(() => {
             $('#choose-story').show();
             $('#intro').hide();
@@ -109,7 +114,7 @@
         })
  
         $('#rand').click(() => {
-            rand = Math.floor(Math.random() * 3) + 1;
+            num = Math.floor(Math.random() * 3) + 1;
             choice = '/story'+num;
             $('#words').attr('action', choice);
             $('#choose-story').hide();
@@ -118,20 +123,47 @@
  
         $('#sub-nouns').click(() => {
             event.preventDefault();
-            $('#choose-nouns').hide();
-            $('#choose-verbs').show();
+            n1 = $('#n1').val();
+            n2 = $('#n2').val();
+            n3 = $('#n3').val();
+            n4 = $('#n4').val();
+            n5 = $('#n5').val();
+            if(!n1 || !n2 || !n3 || !n4 || !n5){
+                $('#valNouns').html('Please enter 5 nouns!');
+                return;
+            }else{
+                $('#choose-nouns').hide();
+                $('#choose-verbs').show();
+            }
         })
  
         $('#sub-verbs').click(() => {
             event.preventDefault();
-            $('#choose-verbs').hide();
-            $('#choose-adj').show();
+            v1 = $('#v1').val();
+            v2 = $('#v2').val();
+            v3 = $('#v3').val();
+            if(!v1 || !v2 || !v3){
+                $('#valVerbs').html('Please enter 3 verbs!');
+                return;
+            }else{
+                $('#choose-verbs').hide();
+                $('#choose-adj').show();
+            }
         })
  
         $('#sub-adj').click(() => {
             event.preventDefault();
-            $('#choose-adj').hide();
-            $('#fin').show();
+            a1 = $('#a1').val();
+            a2 = $('#a2').val();
+            a3 = $('#a3').val();
+            a4 = $('#a4').val();
+            if(!a1 || !a2 || !a3 || !a4){
+                $('#valAdj').html('Please enter 4 adjectives!');
+                return;
+            }else{
+                $('#choose-adj').hide();
+                $('#fin').show();
+            }
         })
 
     </script>

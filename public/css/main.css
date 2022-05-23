@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-.btn{
+button, #sub{
     border: 1px, solid, black;
     background-color: white;
     cursor: pointer;
@@ -24,6 +24,12 @@
     padding: 8px 12px; 
 }
 
+input[type="text"]{
+    border: 1px, solid, black;
+    border-radius: 4px;  
+    font-size: 14px;
+    padding: 8px 12px; 
+}
 
 .usersWords{
     font-weight: bold;
