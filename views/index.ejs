@@ -10,101 +10,163 @@
         <title>Mad Libs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="CSS\main.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+    <div class="container">
         <div id="intro" class="index-div">
             <h1>Let's Play Mad Libs!</h1>
             <button id="cont">Continue</button>
         </div>
 
-    <form action="/result" method="post">
+    
         <div id="choose-story" class="index-div">
             <h1>Which story would you like to see?</h1>
-            <label>
-                <input type="radio" name="story" value="story1">Story 1
-            </label>
-            <label>
-                <input type="radio" name="story" value="story2">Story 2
-            </label>
-            <label>
-                <input type="radio" name="story" value="story3">Story 3
-            </label>
-            <label>
-                <input type="radio" name="story" value="random">Random
-            </label>
-            <a id="subStory">Next!</a>
+            <span id="button-row">
+                <button id="s1">Story1</button>
+                <button id="s2">Story2</button>
+                <button id="s3">Story3</button>
+            </span><br>
+            <button id="rand">Choose for me!</button>
         </div>
 
-        <div id="choose-nouns" class="index-div">
-            <h1>Choose 5 nouns</h1>
-            <input id="n1" type="text" name="noun">
-            <input id="n2" type="text" name="noun">
-            <input id="n3" type="text" name="noun">
-            <input id="n4" type="text" name="noun">
-            <input id="n5" type="text" name="noun">
-            <a id="sub-nouns">Next!</a>
-        </div>
 
-        <div id="choose-verbs" class="index-div">
-            <h1>Choose 3 verbs</h1>
-            <input id="v1" type="text" name="verb">
-            <input id="v2" type="text" name="verb">
-            <input id="v3" type="text" name="verb">
-            <a id="sub-verbs">Next!</a>
-        </div>
+        <form id="words" action="" method="post">
 
-        <div id="choose-adj" class="index-div">
-            <h1>Choose 4 adjuctives</h1>
-            <input id="a1" type="text" name="adj">
-            <input id="a2" type="text" name="adj">
-            <input id="a3" type="text" name="adj">
-            <input id="a4" type="text" name="adj">
-            <a id="sub-adj">Next!</a>
-        </div>
-
-        <div id="fin" class="index-div">
-            <h1>All Done!</h1>
-            <input type="submit" value="submit">
-        </div>
-    </form>
-<script async defer>
-    //buttons
-    var cont     = document.getElementById('cont');
-    var subNouns = document.getElementById('sub-nouns');
-    var subVerbs = document.getElementById('sub-verbs');
-    var subAdj   = document.getElementById('sub-adj');
-
-    //event handlers
-
-    cont.addEventListener('click', () => {
-        //hide this and show next
-    })
-
-    subStory.addEventListener('click', () => {
-        //if random is selected, select random radio
-        num = Math.floor(Math.random() * 3) + 1;
-        story = 'story'+num;
-        //hide this and show next
-    })
-
-    subNouns.addEventListener('click', () => {
-        //hide this and show next
-    })
+            <div id="choose-nouns" class="index-div">
+                <h1>Choose 5 nouns</h1>
+                <input id="n1" type="text" name="noun" required>
+                <input id="n2" type="text" name="noun" required>
+                <input id="n3" type="text" name="noun" required>
+                <input id="n4" type="text" name="noun" required>
+                <input id="n5" type="text" name="noun" required>
+                <span id="valNouns"></span>
+                <button type="button" id="sub-nouns">Next!</button>
+            </div>
 
 
-    subVerbs.addEventListener('click', () => {
-        //hide this and show next
-    })
+            <div id="choose-verbs" class="index-div">
+                <h1>Choose 3 verbs</h1>
+                <p>(all verbs should be past tense)</p>
+                <input id="v1" type="text" name="verb" required>
+                <input id="v2" type="text" name="verb" required>
+                <input id="v3" type="text" name="verb" required>
+                <span id="valVerbs"></span>
+                <button type="button" id="sub-verbs">Next!</button>
+            </div>
 
 
-    subAdj.addEventListener('click', () => {
-        //hide this and show next
-    })
-</script>
+            <div id="choose-adj" class="index-div">
+                <h1>Choose 4 adjectives</h1>
+                <input id="a1" type="text" name="adj" required>
+                <input id="a2" type="text" name="adj" required>
+                <input id="a3" type="text" name="adj" required>
+                <input id="a4" type="text" name="adj" required>
+                <span id="valAdj"></span>
+                <button type="button" id="sub-adj">Next!</button>
+            </div>
 
+
+            <div id="fin" class="index-div">
+                <h1>All Done!</h1>
+                <input id="sub" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript">
+        load();
+
+        function load(){
+            $('#intro').show();
+            $('#choose-story').hide();
+            $('#choose-nouns').hide();
+            $('#choose-verbs').hide();
+            $('#choose-adj').hide();
+            $('#fin').hide();
+        }
+
+    //Button Clicks
+        $('#cont').click(() => {
+            $('#choose-story').show();
+            $('#intro').hide();
+        })
+       
+        $('#s1').click(() => {
+            $('#words').attr('action', '/story1');
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        })
+ 
+        $('#s2').click(() => {
+            $('#words').attr('action', '/story2');
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        })
+ 
+        $('#s3').click(() => {
+            $('#words').attr('action', '/story3');
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        })
+ 
+        $('#rand').click(() => {
+            num = Math.floor(Math.random() * 3) + 1;
+            choice = '/story'+num;
+            $('#words').attr('action', choice);
+            $('#choose-story').hide();
+            $('#choose-nouns').show();
+        })
+ 
+        $('#sub-nouns').click(() => {
+            event.preventDefault();
+            n1 = $('#n1').val();
+            n2 = $('#n2').val();
+            n3 = $('#n3').val();
+            n4 = $('#n4').val();
+            n5 = $('#n5').val();
+            if(!n1 || !n2 || !n3 || !n4 || !n5){
+                $('#valNouns').html('Please enter 5 nouns!');
+                return;
+            }else{
+                $('#choose-nouns').hide();
+                $('#choose-verbs').show();
+            }
+        })
+ 
+        $('#sub-verbs').click(() => {
+            event.preventDefault();
+            v1 = $('#v1').val();
+            v2 = $('#v2').val();
+            v3 = $('#v3').val();
+            if(!v1 || !v2 || !v3){
+                $('#valVerbs').html('Please enter 3 verbs!');
+                return;
+            }else{
+                $('#choose-verbs').hide();
+                $('#choose-adj').show();
+            }
+        })
+ 
+        $('#sub-adj').click(() => {
+            event.preventDefault();
+            a1 = $('#a1').val();
+            a2 = $('#a2').val();
+            a3 = $('#a3').val();
+            a4 = $('#a4').val();
+            if(!a1 || !a2 || !a3 || !a4){
+                $('#valAdj').html('Please enter 4 adjectives!');
+                return;
+            }else{
+                $('#choose-adj').hide();
+                $('#fin').show();
+            }
+        })
+
+    </script>
+    
     </body>
 </html>
