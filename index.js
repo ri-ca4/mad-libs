@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT;
+
 
 
 app.use(express.static('public'));
@@ -43,6 +43,4 @@ app.post("/story3", (req, res) => {
     })
 });
 
-app.listen(port || 5000, () => {
-    console.log(`App listening on port ${port}`)
-});
+app.listen(process.env.PORT || 3000);
