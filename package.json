@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "heroku-postbuild": "npm run build"
@@ -12,10 +11,6 @@
   "keywords": [
     "heroku"
   ],
-=======
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
->>>>>>> 303b548ff9d3b3993c4a00c45cb1254a763c7ad8
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ri-ca4/mad-libs.git"
@@ -34,6 +29,6 @@
     "nodemon": "^2.0.16"
   },
   "engines": {
-    "node": "14.x"
+    "node": "16.14.2"
   }
 }
