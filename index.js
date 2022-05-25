@@ -4,7 +4,7 @@ const app = express();
 
 
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -43,4 +43,4 @@ app.post("/story3", (req, res) => {
     })
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5000);
